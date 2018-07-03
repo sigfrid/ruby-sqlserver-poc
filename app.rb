@@ -11,7 +11,8 @@ loop do
   results = client.execute("WAITFOR (RECEIVE * FROM NotificationsQueue);")
 
   results.each do |row|
-    values =  Hash.from_xml(row['message_body'])#["root"]
+    values =  Hash.from_xml(row['message_body'])["root"]
+    #<root><first type="string">lorem</first><second type="integer">0</second></root>
     puts values
   end
 end
